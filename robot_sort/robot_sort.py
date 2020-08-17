@@ -1,3 +1,21 @@
+#SUDO CODE
+
+# Looks like I need to bubble sort. Looks like I can start at the beginning of the list and check each element against the next element in the list.
+# I'll need to use some memory for the robot's light, as a way to indicate wheter I've sorted the entire list at least 1 time, or not. IF i make it through a full pass of the list, and the robot's light doesn't go off, then we are good.
+# otherwise, I reset the light to OFF at the end of the loop before it starts another pass.
+
+#WHAT I NEED:
+    # a)to determin if we can move to the right. IF so, grab the item at the beginning of the list.
+    # b) determine if the held item is > the compared item:
+    #     then grab the compared item and drop the held item.
+    #     turn the robots light on.
+    #     move to the right.
+    #    otherwise:
+    #     move to the right.
+    # c) repeat this process until we arrive at the end of the list. the larger values will bubble toward the end of the list. 
+    # d) IF I make it thru an iteration of the whole list AND the light doesn't turn on, THEN we know that the list is sorted.
+
+    
 class SortingRobot:
     def __init__(self, l):
         """
@@ -97,7 +115,12 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        n = len(self._list)
+
+        for i in range(n-1):
+            for j in range(0, n-i-1):
+                if self._list[j] > self._list[j+1]:
+                    self._list[j], self._list[j+1] = self._list[j+1], self._list[j]
 
 
 if __name__ == "__main__":
